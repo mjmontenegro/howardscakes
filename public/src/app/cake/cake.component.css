@@ -1,0 +1,28 @@
+.bottom_box{
+    height: 220px;
+    display: flex;
+    justify-content: space-between;
+}
+.image_box{
+    width: 39%;
+    margin: auto;
+    height: 100%;
+}
+
+.detail_cake_thumbnail{
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+.review_box{
+    width: 59%;
+    text-align: left;
+    height: 100%;
+    overflow-y: auto;
+}
+.review{
+    margin-top: 10px;
+}
+.review > p{
+    margin: 0px;
+}

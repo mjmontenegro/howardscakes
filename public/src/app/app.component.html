@@ -1,0 +1,59 @@
+<!-- TODO: Look into changing tab title -->
+<div class="container">
+  <h1> Rate My Cakes </h1>
+
+  <div class="top_box">
+    <!-- Begin Submit a Cake section -->
+    <div class="left_box">
+      <div class="center">
+        <h4>Submit a Cake</h4>
+      </div>
+      <br>
+
+      <form (submit)="submitCake()">
+        <div class="form-group">
+          <label for="name">Baker Name</label>
+          <input name="name" type="text" class="form-control" id="name" [(ngModel)]="newCake.name" placeholder="Enter Name">
+          <!-- <small class="form-text text-muted">We'll never share your name with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+          <label for="url">Image URL</label>
+          <input name="url" type="text" class="form-control" id="url" [(ngModel)]="newCake.url" placeholder="Enter image URL">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <!-- End submit a cake section -->
+
+    <!-- Begin display cakes section -->
+    <div class="right_box">
+      <div class="cake_box" *ngFor="let cake of cakes">
+        <div class="image_box">
+          <a [routerLink]="" (click)="seeDetail(cake)">
+            <img class="cake_thumbnail" [src]="cake.url" alt="Cake Image">
+          </a>
+        </div>
+        <form #Rating="ngForm" (submit)="submitComment(Rating.value, cake)">
+          <div class="form-group">
+            <select name="rating" class="form-control" ngModel>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option selected>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="comment" class="form-control" rows="1" placeholder="Comment" ngModel></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <!-- End display cakes section -->
+
+    </div>
+  </div>
+
+  <app-cake *ngIf="cakeSel" [cakeDetail]="cakeSel"></app-cake>
+
+</div>
